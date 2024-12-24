@@ -96,18 +96,10 @@ export function Content() {
           bg-[var(--jrr-red)] rounded-full 
           p-1.5 sm:p-2
           transition-all duration-300 ease-in-out
-          ${isMobile 
-            ? isDisabled 
-              ? 'opacity-40 cursor-not-allowed' 
-              : 'opacity-100'
-            : isDisabled 
-              ? 'opacity-0 invisible' 
-              : 'opacity-100 visible'
-          }
+          ${isDisabled ? 'opacity-40 cursor-not-allowed' : 'opacity-100'}
           hover:bg-[var(--jrr-red)]/90
           disabled:hover:bg-[var(--jrr-red)]
           self-center
-          z-10
         `}
         aria-label={`Scroll ${direction}`}
       >
@@ -123,11 +115,11 @@ export function Content() {
       </h2>
 
       <div className="flex gap-4">
-        {/* Left Arrow */}
-        {!isMobile && <NavigationArrow direction="left" visible={showLeftArrow} />}
+        {/* Navigation Arrows - Same position for both mobile and desktop */}
+        <NavigationArrow direction="left" visible={showLeftArrow} />
         
         {/* Testimonials Container */}
-        <div className="flex-1 overflow-hidden relative">
+        <div className="flex-1 overflow-hidden">
           <div 
             ref={scrollContainerRef}
             className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-hide scroll-smooth"
@@ -150,22 +142,9 @@ export function Content() {
               </div>
             ))}
           </div>
-
-          {/* Mobile Arrows */}
-          {isMobile && (
-            <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none px-4">
-              <div className="pointer-events-auto">
-                <NavigationArrow direction="left" visible={showLeftArrow} />
-              </div>
-              <div className="pointer-events-auto">
-                <NavigationArrow direction="right" visible={showRightArrow} />
-              </div>
-            </div>
-          )}
         </div>
 
-        {/* Right Arrow */}
-        {!isMobile && <NavigationArrow direction="right" visible={showRightArrow} />}
+        <NavigationArrow direction="right" visible={showRightArrow} />
       </div>
     </div>
   );
