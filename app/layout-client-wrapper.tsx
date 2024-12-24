@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { Navigation } from "@/components/navigation";
-import { Footer } from "@/components/footer";
+import { Footer } from "@/components/footer/index";
 import { AvailabilityProvider } from "@/components/ui/availability";
 
 export default function LayoutClientWrapper({
