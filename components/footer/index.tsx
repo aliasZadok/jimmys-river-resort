@@ -63,9 +63,12 @@ export function Footer() {
                       Ready for Your Riverside Escape?
                     </h2>
                     <div className="flex justify-end">
-                      <CircularButton size="extra-small">
-                        RESERVE NOW
-                      </CircularButton>
+                    <CircularButton 
+                      size="extra-small"
+                      onClick={openDialog}
+                    >
+                      RESERVE NOW
+                    </CircularButton>
                     </div>
                   </div>
 
