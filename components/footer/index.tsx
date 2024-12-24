@@ -70,7 +70,7 @@ export function Footer() {
                   </div>
 
                   {/* Logo and Info Columns */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 pb-10">
                     <div className="relative w-20 h-6">
                       <Image
                         src="/logo_3.svg"
