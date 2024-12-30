@@ -3,10 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui/button';
+import { useAvailability } from '@/components/ui/availability';
 
 export function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const { openDialog } = useAvailability();
   
   const isGreenBackgroundRoute = pathname === '/' || 
     pathname === '/rooms' || 
@@ -16,6 +18,11 @@ export function MobileNav() {
   const hamburgerColor = !isOpen 
     ? (isGreenBackgroundRoute ? 'var(--jrr-beige)' : 'var(--jrr-black)')
     : 'var(--jrr-beige)';
+
+  const handleReservation = () => {
+    setIsOpen(false);
+    openDialog();
+  };
 
   return (
     <div className="md:hidden">
@@ -102,7 +109,7 @@ export function MobileNav() {
           <Button 
             variant="secondary" 
             shape="circle"
-            onClick={() => setIsOpen(false)}
+            onClick={handleReservation}
           >
             Reserve Your Room
           </Button>
